@@ -1,0 +1,21 @@
+{
+  "name": "zco.one",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "axios": "^1.7.7",
+    "dns": "^0.2.2",
+    "express": "^4.21.1",
+    "express-rate-limit": "^7.4.1",
+    "mysql2": "^3.11.3",
+    "nanoid": "^5.0.7",
+    "path": "^0.12.7"
+  }
+}

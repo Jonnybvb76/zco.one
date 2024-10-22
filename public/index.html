@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zco.one</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>zco.one</h1>
+        <p>URL Shortener</p>
+        <div class="box">
+            <div class="button-div">
+                <input type="text" id="url-input" placeholder="Post your long URL here :)" />
+                <button id="shorten-button" onclick="shortenURL()">
+                    <span class="material-icons">arrow_forward</span>
+                </button>
+            </div>
+            <div class="result" id="result" style="display: none;">
+                <p >Your link is <purple>ready</purple>!</p>
+                <div onclick="copyLink()" class="url" id="url">url</div>
+                <div class="notices">
+                    <div class="notice"><purple>Won't</purple> get deleted</div>
+                    <div class="notice"><purple>No</purple> IP Tracking</div>
+                    <div class="notice"><purple>Just</purple> copy and paste</div>
+                </div>
+            </div>
+        </div>
+        <p id="shortened-links"><tag>? Links</tag> already shortened</p>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    font-family: "Inter", serif;
+    color: white;
+}
+
+.container {
+    text-align: center;
+}
+
+h1 {
+    font-size: max(5vw, 4rem);
+    color: #954CFB;
+    font-weight: 900;
+}
+
+p {
+    font-size: max(1vw, 1.5rem);
+    margin: 10px 0;
+}
+
+tag {
+    background-color: #954CFB; 
+    padding: 6px;
+    border-radius: 5px;
+    font-size: 1.1rem;
+}
+
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 500px;
+}
+
+.button-div {
+    position: relative;
+}
+
+input[type="text"] {
+    width: clamp(300px, 50vw, 600px);
+    height: 46px;
+    padding: 10px 40px 10px 10px;
+    border-radius: 15px;
+    border: 2px solid #954CFB;
+    background-color: transparent;
+    color: #ffffff;
+    font-size: 1rem;
+}
+
+input[type="text"]:focus {
+    outline: none;
+}
+
+button {
+    position: absolute;
+    right: 1px;
+    top: 50%; 
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    height: 46px;
+    width: 46px;
+    line-height: 1;
+    padding: 0;
+}
+
+.material-icons {
+    vertical-align: middle; /* Center the icon vertically */
+}
+
+button:hover {
+    color: #e6e6e6;
+}
+
+#shortened-links {
+    margin-top: 20px;
+    color: lightgray;
+}
+
+.result {
+    margin-top: 15px;
+    background-color: #1d1d1d;
+    height: 250px;
+    width: clamp(430px, 50vw, 600px);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.result p {
+    margin-bottom: 30px;
+}
+
+.result .notices {
+    display: flex;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+
+.result .notice {
+    margin-left: 10px;
+}
+
+.result .url {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 350px;
+    background-color: #000000;
+    padding: 15px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.result .url:hover {
+    outline: #503972 solid 2px;
+
+}
+
+.result .url:active {
+    outline: #954CFB solid 2px;
+    background-color: #322446;
+}
+
+purple {
+    color: #954CFB;
+}
