@@ -11,6 +11,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     background-color: black;
     font-family: "Inter", serif;
     color: white;
@@ -44,7 +45,7 @@ tag {
     justify-content: center;
     flex-direction: column;
     flex-wrap: wrap;
-    height: 500px;
+    height: clamp(50px, 60vh, 500px);
 }
 
 .button-div {
@@ -66,7 +67,7 @@ input[type="text"]:focus {
     outline: none;
 }
 
-button {
+.shorten-button {
     position: absolute;
     right: 1px;
     top: 50%; 
@@ -94,16 +95,19 @@ button:hover {
     color: lightgray;
 }
 
+.button-zone {
+    display:inline;
+}
+
 .result {
     margin-top: 15px;
     background-color: #1d1d1d;
     height: 250px;
-    width: clamp(430px, 50vw, 600px);
+    width: clamp(370px, 50vw, 600px);
     border-radius: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 }
 
 .result p {
@@ -119,6 +123,7 @@ button:hover {
 
 .result .notice {
     margin-left: 10px;
+    color: #d1d1d1;
 }
 
 .result .url {
@@ -126,7 +131,7 @@ button:hover {
     align-items: center;
     justify-content: center;
     height: 50px;
-    width: 350px;
+    width: clamp(250px, 40vw, 350px);
     background-color: #000000;
     padding: 15px;
     border-radius: 15px;
@@ -143,6 +148,32 @@ button:hover {
     background-color: #322446;
 }
 
+.close-button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    height: 45px;
+    width: 50px;
+    line-height: 1;
+    padding: 0;
+    align-self: flex-end;
+}
+
 purple {
     color: #954CFB;
+}
+
+.dialog {
+    height: 20px;
+    margin-top: 10px;
+    color: rgb(255, 0, 106);
+    font-weight: 300;
+    position:sticky; 
+    
+}
+
+.version {
+    color: #777777;
+    margin-top: 6vw;
 }

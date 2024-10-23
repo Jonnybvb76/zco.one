@@ -12,24 +12,28 @@
         <h1>zco.one</h1>
         <p>URL Shortener</p>
         <div class="box">
-            <div class="button-div">
-                <input type="text" id="url-input" placeholder="Post your long URL here :)" />
-                <button id="shorten-button" onclick="shortenURL()">
-                    <span class="material-icons">arrow_forward</span>
-                </button>
-            </div>
+                <div class="button-div">
+                    <input type="text" id="url-input" placeholder="Post your long URL here :)" />
+                    <button id="shorten-button" class="shorten-button" onclick="shortenURL()">
+                        <span class="material-icons">arrow_forward</span>
+                    </button>
+                </div>
+                <div class="dialog" id="dialog"></div>
+
             <div class="result" id="result" style="display: none;">
+                <button id="close-button" class="close-button" onclick="closeResult()">
+                    <span class="material-icons">close</span>
+                </button>
                 <p >Your link is <purple>ready</purple>!</p>
                 <div onclick="copyLink()" class="url" id="url">url</div>
                 <div class="notices">
-                    <div class="notice"><purple>Won't</purple> get deleted</div>
-                    <div class="notice"><purple>No</purple> IP Tracking</div>
-                    <div class="notice"><purple>Just</purple> copy and paste</div>
+                    <div class="notice">(This link <purple>won't</purple> get deleted)</div>
                 </div>
             </div>
         </div>
         <p id="shortened-links"><tag>? Links</tag> already shortened</p>
     </div>
+    <div class="version">v1.1.0</div>
     <script src="script.js"></script>
 </body>
 </html>
