@@ -65,6 +65,14 @@ const shortenLimiter = rateLimit({
     message: 'Zu viele Anfragen, bitte versuche es später erneut.'
 });
 
+app.get('/count', async (req, res) => {
+    const sql = 'SELECT COUNT(*) AS urlCount FROM urls';
+    db.query(sql, (err, result) => {
+        if (err) throw err;
+        return res.json({ count: result[0].urlCount });
+    });
+});
+
 app.post('/shorten', shortenLimiter, async (req, res) => {
     const { originalUrl } = req.body;
 

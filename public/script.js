@@ -31,6 +31,29 @@ async function shortenURL() {
     }
 }
 
+async function count() {
+    countElement = document.getElementById("count")
+    try {
+        const response = await fetch('/count', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+
+        if(!response.ok) {
+            throw new Error('Error getting URL count');
+        }
+
+        const data = await response.json();
+
+        countElement.innerHTML = data.count + ' Links';
+
+    } catch (error) {
+        console.error('Error:', error)
+    }
+}
+
 function copyLink() {
     const copyText = document.getElementById('url').innerText;
 
@@ -59,3 +82,5 @@ document.getElementById("url-input").addEventListener("keypress", function(event
         shortenURL();
     }
 });
+
+count();
