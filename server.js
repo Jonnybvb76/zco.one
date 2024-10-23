@@ -91,7 +91,7 @@ async function checkAccess(req, res, next) {
 
 const shortenLimiter = rateLimit({
     windowMs: 60 * 1000, 
-    max: 500,  
+    max: 50,  
     message: 'Zu viele Anfragen, bitte versuche es später erneut.'
 });
 

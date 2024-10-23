@@ -2,6 +2,7 @@
 async function shortenURL() {
     const urlInput = document.getElementById('url-input');
     const originalUrl = urlInput.value;
+    const token = 'jKsf734nAhjdk93Sab';
 
     dialog = document.getElementById("dialog");
 
@@ -12,6 +13,7 @@ async function shortenURL() {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify({ originalUrl }), 
         });
@@ -32,12 +34,15 @@ async function shortenURL() {
 }
 
 async function count() {
-    countElement = document.getElementById("count")
+    const countElement = document.getElementById("count");
+    const token = 'jKsf734nAhjdk93Sab';
+
     try {
         const response = await fetch('/count', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
             },
         });
 
@@ -46,11 +51,10 @@ async function count() {
         }
 
         const data = await response.json();
-
         countElement.innerHTML = data.count + ' Links';
 
     } catch (error) {
-        console.error('Error:', error)
+        console.error('Error:', error);
     }
 }
 
