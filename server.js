@@ -59,21 +59,43 @@ function checkIfShortUrlExists(shortUrl) {
     });
 }
 
+async function checkAccess(req, res, next) {
+    const clientIp = req.ip || req.connection.remoteAddress;
+    
+    if (clientIp === '::1' || clientIp === '127.0.0.1') {
+        return next();
+    }
+
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1];
+
+    if (!token) {
+        return res.status(401).json({ error: 'Unauthorized: Missing token' });
+    }
+
+    try {
+        const sql = 'SELECT * FROM access_token WHERE token = ? AND expires_at > NOW()';
+        db.query(sql, [token], (err, result) => {
+            if (err) throw err;
+
+            if (result.length === 0) {
+                return res.status(401).json({ error: 'Unauthorized: Invalid or expired token' });
+            }
+
+            next();
+        });
+    } catch (error) {
+        return res.status(500).json({ error: 'Internal Server Error' });
+    }
+}
+
 const shortenLimiter = rateLimit({
     windowMs: 60 * 1000, 
-    max: 10,  
+    max: 500,  
     message: 'Zu viele Anfragen, bitte versuche es später erneut.'
 });
 
-app.get('/count', async (req, res) => {
-    const sql = 'SELECT COUNT(*) AS urlCount FROM urls';
-    db.query(sql, (err, result) => {
-        if (err) throw err;
-        return res.json({ count: result[0].urlCount });
-    });
-});
-
-app.post('/shorten', shortenLimiter, async (req, res) => {
+app.post('/shorten', checkAccess, shortenLimiter, async (req, res) => {
     const { originalUrl } = req.body;
 
     if (!originalUrl || !isValidUrl(originalUrl)) {
@@ -96,6 +118,14 @@ app.post('/shorten', shortenLimiter, async (req, res) => {
             if (err) throw err;
             return res.json({ shortUrl });
         });
+    });
+});
+
+app.get('/count', checkAccess, async (req, res) => {
+    const sql = 'SELECT COUNT(*) AS urlCount FROM urls';
+    db.query(sql, (err, result) => {
+        if (err) throw err;
+        return res.json({ count: result[0].urlCount });
     });
 });
 
