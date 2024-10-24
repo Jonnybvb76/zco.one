@@ -18,7 +18,7 @@ async function shortenUrl(req, res) {
         res.json({ shortUrl: response.data.shortUrl });
     } catch (error) {
         console.error('Error contacting API:', error.response?.data || error.message);
-        res.status(500).json({ error: 'Error communicating with API' });
+        res.status(400).json({ error: error.response?.data.error });
     }
 }
 
@@ -31,7 +31,7 @@ async function getUrlCount(req, res) {
         res.json({ count: response.data.count });
     } catch (error) {
         console.error('Error fetching URL count:', error.response?.data || error.message);
-        res.status(500).json({ error: 'Error communicating with API' });
+        res.status(400).json({ error: 'Error communicating with API' });
     }
 }
 
