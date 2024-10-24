@@ -9,12 +9,13 @@ services:
       - "24401:24401"
     volumes:
       - ./backend:/usr/src/app
+      - ./frontend/public:/usr/src/app/public
 
   api:
     build:
       context: .
       dockerfile: api/Dockerfile
     ports:
-      - "24402:24402"
+      - "3002:3002"
     volumes:
       - ./api:/usr/src/app
