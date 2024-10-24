@@ -3,7 +3,7 @@ const express = require('express');
 const { shortenUrl, getUrlCount, redirectShortUrl } = require('./controllers/urlController');
 
 const app = express();
-const port = process.env.BACKEND_PORT || 3001;
+const port = process.env.BACKEND_PORT || 24401;
 
 app.use(express.json());
 app.use(express.static('../frontend/public'));

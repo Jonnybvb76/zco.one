@@ -4,7 +4,7 @@ const { shortenUrl, getUrlCount, getOriginalUrl } = require('./controllers/apiCo
 const { verifyToken } = require('./middleware/apiAuthMiddleware');
 
 const app = express();
-const port = process.env.API_PORT || 3002;
+const port = process.env.API_PORT || 24402;
 
 app.use(express.json());
 
