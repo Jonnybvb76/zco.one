@@ -1,5 +1,5 @@
 async function shortenURL() {
-    const urlInput = document.getElementById('url-input');
+    var urlInput = document.getElementById('url-input');
     const originalUrl = urlInput.value;
     dialog = document.getElementById("dialog");
     dialog.innerHTML = "";
@@ -18,9 +18,11 @@ async function shortenURL() {
             document.getElementById('result').style.display = "flex";
         } else {
             dialog.innerHTML = "Error: " + (data.error || 'Could not shorten URL');
+            urlInput.value = "";
         }
     } catch (error) {
         console.error('Error:', error);
+        urlInput.value = "";
     }
 }
 
@@ -66,6 +68,8 @@ function closeResult() {
     result = document.getElementById("result");
     if(result.style.display == "flex") {
         result.style.display = "none";
+        const input = document.getElementById('url-input');
+        input.value = "";
     }
 }
 
