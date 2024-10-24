@@ -9,7 +9,9 @@ services:
       - "24401:24401"
     volumes:
       - ./backend:/usr/src/app
-      - ./frontend/public:/usr/src/app/public
+      - ./frontend/public:/usr/src/frontend/public
+    networks:
+      - web
 
   api:
     build:
@@ -19,3 +21,9 @@ services:
       - "3002:3002"
     volumes:
       - ./api:/usr/src/app
+    networks:
+      - web
+
+networks:
+  web:
+    external: true
