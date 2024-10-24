@@ -8,18 +8,30 @@ async function shortenUrl(req, res) {
         return res.status(400).json({ error: 'Invalid or missing URL' });
     }
 
-    const shortUrl = generateCustomId();
-
-    const sql = 'INSERT INTO urls (original_url, short_url) VALUES (?, ?)';
-    mysql.query(sql, [originalUrl, shortUrl], (err) => {
+    const sqlSelect = 'SELECT short_url FROM urls WHERE original_url = ? LIMIT 1';
+    mysql.query(sqlSelect, [originalUrl], (err, result) => {
         if (err) {
             console.error('Database error:', err);
             return res.status(500).json({ error: 'Database error' });
         }
-        res.json({ shortUrl });
+
+        if (result.length > 0) {
+            const shortUrl = result[0].short_url;
+            return res.json({ shortUrl });
+        }
+
+        const shortUrl = generateCustomId();
+        const sqlInsert = 'INSERT INTO urls (original_url, short_url) VALUES (?, ?)';
+        
+        mysql.query(sqlInsert, [originalUrl, shortUrl], (err) => {
+            if (err) {
+                console.error('Database error:', err);
+                return res.status(500).json({ error: 'Database error' });
+            }
+            return res.json({ shortUrl });
+        });
     });
 }
-
 async function getUrlCount(req, res) {
     const sql = 'SELECT COUNT(*) AS urlCount FROM urls';
     
