@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+
+body {
+    margin: 0;
+    display: grid;
+    grid-template-columns: 20% auto 20%;
+    background-color: black;
+    font-family: "Source Code Pro", monospace;
+    color: #fff;
+    height: 100vh;
+}
+
+prpl {
+    color: #954CFB;
+}
+
+.container {
+    grid-column-start: 2;
+    display: flex;
+    align-items: center;
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-flow: column;
+    text-align:center;
+}
+
+.header .title {
+    font-size: 20px;
+    font-weight: 600;
+
+    margin-bottom: 10px;
+
+}

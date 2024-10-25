@@ -7,6 +7,7 @@ const app = express();
 const port = process.env.API_PORT || 24402;
 
 app.use(express.json());
+app.use(express.static("./frontend"))
 
 app.post('/v1/shorten', verifyToken, shortenUrl);
 
