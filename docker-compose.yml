@@ -16,7 +16,7 @@ services:
       context: .
       dockerfile: api/Dockerfile
     ports:
-      - "3002:3002"
+      - "24402:24402"
     volumes:
       - ./api:/usr/src/app
     networks:
